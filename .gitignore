@@ -43,18 +43,6 @@ jest-test-results.json
 # ESLint
 .eslintcache
 
-# Local dev databases or output
-*.sqlite
-*.db
-dump.sql
-
 # Generated lock files (if you only use one package manager, e.g., pnpm)
 package-lock.json
 yarn.lock
-
-# Optional: Ignore backend build output (if using ts-node or build step)
-backend/dist/
-backend/build/
-
-# Optional: Ignore frontend static exports (if using `next export`)
-frontend/out/
