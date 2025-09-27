@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { TaskProvider, useTaskContext } from "@/context/TaskContext";
-import AuthForm from "@/components/AuthForm";
-import TaskList from "@/components/TaskList";
+import { TaskProvider, useTaskContext } from '@/context/TaskContext';
+import AuthForm from '@/components/AuthForm';
+import TaskList from '@/components/TaskList';
 
 function HomePageContent() {
   const { isLoggedIn, user, logout, loading } = useTaskContext();

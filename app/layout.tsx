@@ -1,16 +1,16 @@
-import type React from "react";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type React from 'react';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Task Manager - Simple Task Management App",
+  title: 'Task Manager - Simple Task Management App',
   description:
-    "A simple frontend task management application with login and CRUD operations",
+    'A simple frontend task management application with login and CRUD operations',
 };
 
 export default function RootLayout({

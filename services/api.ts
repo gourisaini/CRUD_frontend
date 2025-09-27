@@ -1,5 +1,5 @@
-import { isAxiosError } from "axios";
-import instance from "./axios";
+import { isAxiosError } from 'axios';
+import instance from './axios';
 import {
   AddTaskRes,
   AuthRes,
@@ -7,43 +7,43 @@ import {
   SignInReq,
   Task,
   User,
-} from "@/interface/Task.interface";
+} from '@/interface/Task.interface';
 
 export const handleApiError = (err: unknown): string => {
   if (isAxiosError(err)) {
-    return (err.response?.data?.message as string) || "Something went wrong";
+    return (err.response?.data?.message as string) || 'Something went wrong';
   }
-  return "Unexpected error";
+  return 'Unexpected error';
 };
 
 // ---- AUTH ----
 export const apiLogin = async (payload: LoginReq): Promise<AuthRes> => {
-  const { data } = await instance.post<AuthRes>("/login", payload);
+  const { data } = await instance.post<AuthRes>('/login', payload);
   return data;
 };
 
 export const apiSignup = async (payload: SignInReq): Promise<AuthRes> => {
-  const { data } = await instance.post<AuthRes>("/signup", payload);
+  const { data } = await instance.post<AuthRes>('/signup', payload);
   return data;
 };
 
 export const apiCurrentUser = async (): Promise<{ user?: User }> => {
-  const { data } = await instance.get<{ user?: User }>("/current");
+  const { data } = await instance.get<{ user?: User }>('/current');
   return data;
 };
 
 export const apiLogout = async (): Promise<void> => {
-  await instance.get("/signout");
+  await instance.get('/signout');
 };
 
 // ---- TASKS ----
 export const apiGetTasks = async (): Promise<{ todos: Task[] }> => {
-  const { data } = await instance.get<{ todos: Task[] }>("/todo");
+  const { data } = await instance.get<{ todos: Task[] }>('/todo');
   return data;
 };
 
 export const apiAddTask = async (task: Task): Promise<AddTaskRes> => {
-  const { data } = await instance.post<AddTaskRes>("/todo", task);
+  const { data } = await instance.post<AddTaskRes>('/todo', task);
   return data;
 };
 

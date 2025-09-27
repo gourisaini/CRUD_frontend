@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useTaskContext } from "@/context/TaskContext";
-import { AuthRes, LoginReq, SignInReq } from "@/interface/Task.interface";
-import { apiLogin, apiSignup, handleApiError } from "@/services/api";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useTaskContext } from '@/context/TaskContext';
+import { AuthRes, LoginReq, SignInReq } from '@/interface/Task.interface';
+import { apiLogin, apiSignup, handleApiError } from '@/services/api';
 
 type AuthFormInputs = LoginReq & Partial<SignInReq>;
 
 export default function AuthForm() {
   const { currentUser } = useTaskContext();
   const [isSignup, setIsSignup] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [localLoading, setLocalLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // New state for password visibility
 
@@ -29,10 +29,9 @@ export default function AuthForm() {
     setLocalLoading(true);
     try {
       const res = await fn(data);
-
       if (res.success) {
         await currentUser();
-        setError("");
+        setError('');
       }
       return res;
     } catch (err) {
@@ -45,7 +44,7 @@ export default function AuthForm() {
   };
 
   const onSubmit = async (data: AuthFormInputs) => {
-    setError("");
+    setError('');
     if (isSignup) {
       await handleAuth(apiSignup, {
         name: data.name!,
@@ -64,8 +63,8 @@ export default function AuthForm() {
   const toggleMode = () => {
     reset();
     setIsSignup(!isSignup);
-    setError("");
-    setShowPassword(false); // Reset password visibility when toggling modes
+    setError('');
+    setShowPassword(false);
   };
 
   const togglePasswordVisibility = () => {
@@ -75,7 +74,7 @@ export default function AuthForm() {
   return (
     <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
       <h1 className="text-2xl font-bold text-center mb-6">
-        {isSignup ? "Sign Up" : "Sign In"}
+        {isSignup ? 'Sign Up' : 'Sign In'}
       </h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -88,7 +87,7 @@ export default function AuthForm() {
               <input
                 type="text"
                 placeholder="Enter Name"
-                {...register("name", { required: "Name is required" })}
+                {...register('name', { required: 'Name is required' })}
                 className="w-full border rounded px-3 py-2"
                 disabled={localLoading}
               />
@@ -104,12 +103,12 @@ export default function AuthForm() {
               <input
                 type="tel"
                 placeholder="Enter Contact"
-                {...register("contact", {
-                  required: "Contact is required",
+                {...register('contact', {
+                  required: 'Contact is required',
                   pattern: {
                     value: /^\d{10,15}$/,
                     message:
-                      "Contact must be a valid phone number (10-15 digits)",
+                      'Contact must be a valid phone number (10-15 digits)',
                   },
                 })}
                 className="w-full border rounded px-3 py-2"
@@ -129,11 +128,11 @@ export default function AuthForm() {
           <input
             type="email"
             placeholder="Enter Email"
-            {...register("email", {
-              required: "Email is required",
+            {...register('email', {
+              required: 'Email is required',
               pattern: {
                 value: /^\S+@\S+$/i,
-                message: "Email is invalid",
+                message: 'Email is invalid',
               },
             })}
             className="w-full border rounded px-3 py-2"
@@ -145,17 +144,17 @@ export default function AuthForm() {
         </div>
 
         <div className="relative">
-          {" "}
+          {' '}
           {/* Wrapper for password toggle */}
           <label className="block text-sm font-medium mb-1">Password</label>
           <input
-            type={showPassword ? "text" : "password"} // Dynamic type
+            type={showPassword ? 'text' : 'password'} // Dynamic type
             placeholder="Enter Password"
-            {...register("password", {
-              required: "Password is required",
+            {...register('password', {
+              required: 'Password is required',
               minLength: {
                 value: 6,
-                message: "Password must be at least 6 characters",
+                message: 'Password must be at least 6 characters',
               },
             })}
             className="w-full border rounded pr-10 px-3 py-2" // Added pr-10 for icon space
@@ -166,7 +165,7 @@ export default function AuthForm() {
             onClick={togglePasswordVisibility}
             disabled={localLoading}
             className="absolute right-3 top-[2.5rem] transform -translate-y-1/2 text-gray-400 hover:text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
-            aria-label={showPassword ? "Hide password" : "Show password"}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
             {showPassword ? (
               <svg
@@ -217,7 +216,7 @@ export default function AuthForm() {
           disabled={localLoading}
           className="w-full bg-neutral-900 text-white py-2 rounded hover:bg-neutral-700 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity cursor-pointer"
         >
-          {localLoading ? "Processing..." : isSignup ? "Sign Up" : "Sign In"}
+          {localLoading ? 'Processing...' : isSignup ? 'Sign Up' : 'Sign In'}
         </button>
       </form>
 
@@ -230,8 +229,8 @@ export default function AuthForm() {
           className="text-blue-600 text-sm cursor-pointer hover:opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSignup
-            ? "Already have an account? Sign In"
-            : "Don’t have an account? Sign Up"}
+            ? 'Already have an account? Sign In'
+            : 'Don’t have an account? Sign Up'}
         </button>
       </div>
     </div>

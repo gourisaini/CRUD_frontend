@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useTaskContext } from "@/context/TaskContext";
-import { Task } from "@/interface/Task.interface";
-import { apiDeleteTask, apiToggleTask } from "@/services/api";
+import { useTaskContext } from '@/context/TaskContext';
+import { Task } from '@/interface/Task.interface';
+import { apiDeleteTask, apiToggleTask } from '@/services/api';
 
 export default function TaskItem({
   task,
@@ -20,7 +20,7 @@ export default function TaskItem({
         setTasks((prev: Task[]) => prev.filter((t) => t._id !== id));
       }
     } catch (err) {
-      console.error("Delete task error:", err);
+      console.error('Delete task error:', err);
     }
   };
 
@@ -35,7 +35,7 @@ export default function TaskItem({
         );
       }
     } catch (err) {
-      console.error("Delete task error:", err);
+      console.error('Delete task error:', err);
     }
   };
 
@@ -48,13 +48,13 @@ export default function TaskItem({
           onChange={() => toggleComplete(task._id)}
           className="mt-1 cursor-pointer"
           aria-label={`Mark ${task.title} as ${
-            task.completed ? "incomplete" : "complete"
+            task.completed ? 'incomplete' : 'complete'
           }`}
         />
         <div>
           <h3
             className={`font-medium ${
-              task.completed ? "line-through text-gray-500" : ""
+              task.completed ? 'line-through text-gray-500' : ''
             }`}
           >
             {task.title}

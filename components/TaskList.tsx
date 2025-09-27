@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useTaskContext } from "@/context/TaskContext";
-import TaskItem from "./TaskItem";
-import TaskForm from "./TaskForm";
-import { Task } from "@/interface/Task.interface";
+import { useState } from 'react';
+import { useTaskContext } from '@/context/TaskContext';
+import TaskItem from './TaskItem';
+import TaskForm from './TaskForm';
+import { Task } from '@/interface/Task.interface';
 
 export default function TaskList() {
   const { tasks } = useTaskContext();

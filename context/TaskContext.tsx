@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, {
   createContext,
@@ -8,9 +8,9 @@ import React, {
   ReactNode,
   Dispatch,
   SetStateAction,
-} from "react";
-import { Task, User } from "@/interface/Task.interface";
-import { apiCurrentUser, apiGetTasks, apiLogout } from "@/services/api";
+} from 'react';
+import { Task, User } from '@/interface/Task.interface';
+import { apiCurrentUser, apiGetTasks, apiLogout } from '@/services/api';
 
 interface TaskContextType {
   user: User | null;
@@ -37,7 +37,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
       const { todos } = await apiGetTasks();
       setTasks(todos || []);
     } catch (err) {
-      console.error("Error fetching tasks:", err);
+      console.error('Error fetching tasks:', err);
       setTasks([]);
     } finally {
       setLoading(false);
@@ -57,7 +57,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
         setIsLoggedIn(false);
       }
     } catch (err) {
-      console.error("Error fetching current user:", err);
+      console.error('Error fetching current user:', err);
       setUser(null);
       setIsLoggedIn(false);
     } finally {
@@ -73,7 +73,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
       setUser(null);
       setTasks([]);
     } catch (err) {
-      console.error("Logout error:", err);
+      console.error('Logout error:', err);
     } finally {
       setLoading(false);
     }
@@ -103,6 +103,6 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
 
 export const useTaskContext = () => {
   const ctx = useContext(TaskContext);
-  if (!ctx) throw new Error("useTaskContext must be used within TaskProvider");
+  if (!ctx) throw new Error('useTaskContext must be used within TaskProvider');
   return ctx;
 };

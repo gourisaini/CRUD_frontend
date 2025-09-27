@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useForm } from "react-hook-form";
-import { useTaskContext } from "@/context/TaskContext";
-import { AddTaskRes, Task } from "@/interface/Task.interface";
-import { apiAddTask, apiUpdateTask } from "@/services/api";
+import { useForm } from 'react-hook-form';
+import { useTaskContext } from '@/context/TaskContext';
+import { AddTaskRes, Task } from '@/interface/Task.interface';
+import { apiAddTask, apiUpdateTask } from '@/services/api';
 
 export default function TaskForm({
   editingTask,
@@ -20,7 +20,7 @@ export default function TaskForm({
     reset,
     formState: { errors },
   } = useForm<Task>({
-    defaultValues: editingTask || { title: "", description: "" },
+    defaultValues: editingTask || { title: '', description: '' },
   });
 
   const handleTask = async (data: Task) => {
@@ -44,7 +44,7 @@ export default function TaskForm({
         }
       }
     } catch (err) {
-      console.error(`${editingTask ? "Update" : "Add"} task error:`, err);
+      console.error(`${editingTask ? 'Update' : 'Add'} task error:`, err);
     }
   };
 
@@ -65,7 +65,7 @@ export default function TaskForm({
         <input
           type="text"
           placeholder="Enter Title"
-          {...register("title", { required: "Title is required" })}
+          {...register('title', { required: 'Title is required' })}
           className="w-full border rounded px-3 py-2"
           autoComplete="off"
         />
@@ -79,7 +79,7 @@ export default function TaskForm({
         <label className="block text-sm font-medium mb-1">Description</label>
         <textarea
           placeholder="Enter Description"
-          {...register("description")}
+          {...register('description')}
           className="w-full border rounded px-3 py-2"
           rows={3}
         />
@@ -91,7 +91,7 @@ export default function TaskForm({
           type="submit"
           className="bg-neutral-900 hover:bg-neutral-700 text-white px-4 py-2 rounded-full text-sm cursor-pointer"
         >
-          {editingTask ? "Update Task" : "Add Task"}
+          {editingTask ? 'Update Task' : 'Add Task'}
         </button>
         <button
           type="button"
